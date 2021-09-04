@@ -1,0 +1,27 @@
+.input {
+    color: #fff;
+    font-size: 1.25rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+    background:  rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-left: 98px;
+    border-radius: 10px;
+}
+
+.imageUpload {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    color: #2883D7;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+        filter:  brightness(0.5);
+    }
+}

@@ -1,0 +1,26 @@
+.link {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 49px;
+    /* identical to box height */
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.brand {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 73px;
+    /* identical to box height */
+    background: linear-gradient(135deg, #F95B3F 0%, #D11655 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav {
+    background: #121212;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+   
+}
