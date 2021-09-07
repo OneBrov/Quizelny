@@ -23,18 +23,9 @@ export const CoverStep = () => {
                 <TextField
                     value={quizName} 
                     onChange={(e)=> setQuizName(e.target.value)}
-                    className={styles.input}
                     fullWidth
                     variant="filled"
                     label="Название викторины"
-                    color="primary"
-                    InputLabelProps={{
-                        style: { color: '#fff' },
-                    }}
-
-                    InputProps={{
-                        style: { color: '#fff' },
-                    }}
                 />
 
                 <TextField 
@@ -44,14 +35,6 @@ export const CoverStep = () => {
                     fullWidth
                     variant="filled"
                     label="Основные темы викторины"
-                    color="primary"
-                    InputLabelProps={{
-                        style: { color: '#fff' },
-                    }}
-
-                    InputProps={{
-                        style: { color: '#fff' },
-                    }}
                 />
 
                 <Button

@@ -1,4 +1,4 @@
-import { Box, Typography } from '@material-ui/core'
+import { Box, Divider, Typography } from '@material-ui/core'
 import React from 'react'
 import styles from './TitleLine.module.scss' 
 
@@ -22,7 +22,7 @@ export const TitleLine:React.FC<TitleLineProps> = ({mainTitle="", secondaryTitle
             }
             
         </Box>
-        <hr className={styles.br}/>
+        <Divider className="mt-10"/>
         </>
     )
 }

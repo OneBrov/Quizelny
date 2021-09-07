@@ -7,11 +7,7 @@ import { TitleLine } from '../../../components/TitleLine'
 export default function CreationPage() {
     return (
         <MainLayout>
-            <TitleLine mainTitle="Создание викторины">
-                <Typography className="mr-40" variant="h3">
-                    Обложка
-                </Typography>
-            </TitleLine>
+            <TitleLine mainTitle="Создание викторины" />
             <CreateQuiz />
         </MainLayout>
     )
