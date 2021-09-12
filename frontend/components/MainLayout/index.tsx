@@ -25,7 +25,7 @@ export const MainLayout:React.FC<MainLayoutProps> = ({children, title = "Quizeln
                
                 <LeftMenu />
                 
-                <div className={`flex ${styles.menuMargin}  d-flex flex-column h-100 `}>
+                <div className={`${styles.menuMargin}  d-flex flex flex-column h-100p flex-auto`}>
                     {children}
                 </div>
                 

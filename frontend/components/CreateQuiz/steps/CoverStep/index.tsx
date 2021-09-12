@@ -1,28 +1,31 @@
 import { Box, Button, Divider, TextField, Typography } from '@material-ui/core'
+import { observer } from 'mobx-react-lite'
 import React from 'react'
+import Cover from '../../../../src/store/Cover'
+import { FileButton } from '../../../Buttons/FileButton'
 import { QuizCard } from '../../../cards/QuizCard'
 import styles from './CoverStep.module.scss'
-export const CoverStep = () => {
+export const CoverStep = observer(() => {
 
     const [quizName, setQuizName] = React.useState<string>('')
     const [tagsLine, setTagsLine] = React.useState<string>('')
     const [tags, setTags] = React.useState<string[]>([])
 
 
-    const handleTagsChange = (e) => {
+    const handleTagsChange = (e: any) => {
         const clearList = e.target.value.split(',').map((val: string) =>
             val.trim().toLowerCase()    
         )
         setTagsLine(e.target.value)
-        setTags(clearList)
+        Cover.changeTags(clearList)
     } 
 
     return (
         <div className="d-flex justify-center flex-column">
             <div className="">
                 <TextField
-                    value={quizName} 
-                    onChange={(e)=> setQuizName(e.target.value)}
+                    value={Cover.data.title} 
+                    onChange={(e)=> Cover.changeTitle(e.target.value)}
                     fullWidth
                     variant="filled"
                     label="Название викторины"
@@ -37,18 +40,12 @@ export const CoverStep = () => {
                     label="Основные темы викторины"
                 />
 
-                <Button
-                    className="mt-20 "
-                    variant="contained"
-                    component="label"
-                >
-                    Загрузить изображение
-                <input
-                    type="file"
-                    accept="image/*"
-                    hidden
+                <FileButton 
+                    value={null} 
+                    onChange={()=>console.log("change")}
+                    type="image"    
                 />
-                </Button>
+                    
             </div>
             <Divider className="mt-20" />
             <div className="mt-20 d-flex flex-column">
@@ -56,13 +53,13 @@ export const CoverStep = () => {
                     Предпросмотр обложки
                 </Typography>
                 <div>
-                    <QuizCard tags={tags} name={quizName} />
+                    <QuizCard name={Cover.data.title} tags={Cover.data.tags} src={Cover.data.picture} />
                 </div>
             </div>
             
         </div>
     )
-}
+})
 
 
 

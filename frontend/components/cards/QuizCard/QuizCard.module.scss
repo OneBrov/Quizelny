@@ -7,6 +7,7 @@
     &:hover {
         background-size: 110%;
     }
+    max-width: 100%;
 }
 
 
@@ -16,14 +17,14 @@
     color: #fff;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    padding: 0px 10px;
+    padding: 2px 2px 2px 10px  ;
     border-radius: 4px;
     backdrop-filter: blur(2px);
-
+  
 }
 
 .bottom {
-    padding: 10px;
+    
     margin-top: auto;
     color: #fff;
     background: rgba(0,0,0, 0.7);
@@ -39,4 +40,9 @@
 .contentBackground {
     background: rgba(0,0,0, 0.2);
     border-radius: 0px 4px 4px 0px;
+}
+
+.row {
+    max-width: 100%;
+    overflow: hidden;
 }

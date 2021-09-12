@@ -30,9 +30,12 @@ const theme = createTheme({
     secondary: {
       main: '#19857b',
     },
+    success: {
+      main: '#81c784',
+    },
 
     error: {
-      main: red.A400,
+      main: "#f44336",
     },
     background: {
       default: '',

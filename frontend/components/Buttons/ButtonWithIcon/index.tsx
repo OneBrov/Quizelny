@@ -9,15 +9,19 @@ interface ButtonWithIconProps {
     iconSrc: string
     width?: string
     height?: string 
+    onClick: ()=>void
 }
 
-export const ButtonWithIcon:React.FC<ButtonWithIconProps> = ({background, text, iconSrc, width="400px", height="100px"}) => {
+export const ButtonWithIcon:React.FC<ButtonWithIconProps> = ({
+  background, text, iconSrc, width="400px", height="100px", onClick
+}) => {
     return (
         <MainButton 
             width={width}
             height={height}
             fontSize="24px"
             background={background}
+            onClick={onClick}
       >
         <div className="d-flex align-center ">
           <div className="d-flex flex-column mr-20 ">

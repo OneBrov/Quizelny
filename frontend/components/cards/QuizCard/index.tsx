@@ -5,11 +5,11 @@ import styles from './QuizCard.module.scss'
 
 interface QuizCardProps {
     size?: "sm" | "md" | "lg"
-    src: string
-    name: string
-    tags: string[]
+    src: String
+    name: String
+    tags: String[]
     playCount?: Number
-    content: string[][]
+    content: String[][]
 }
 
 const sizes = {
@@ -19,7 +19,9 @@ const sizes = {
 }
 
 
-export const QuizCard:React.FC<QuizCardProps> = ({size="md", src, name, tags, playCount=0, content=[]}) => {
+export const QuizCard:React.FC<QuizCardProps> = ({
+    size="md", src="/static/noPicture.svg", name, tags, playCount=0, content=[]
+}) => {
     return (
         <div className="d-flex  mt-10 mb-10">
             <Paper elevation={3} className={styles.card} style={{
@@ -37,8 +39,6 @@ export const QuizCard:React.FC<QuizCardProps> = ({size="md", src, name, tags, pl
                                     <Image src="/static/count.svg" width={20} height={20} alt="Play count"/>
                                     <span className="ml-5">{playCount}</span>
                                 </div>
-                                       
-                                
                             </Tooltip>
                             <Tooltip className="d-flex align-center" title="Создать комнату с этой викториной">
                                 <IconButton color="primary" aria-label="export quiz">
@@ -49,8 +49,8 @@ export const QuizCard:React.FC<QuizCardProps> = ({size="md", src, name, tags, pl
                         </div>
 
                     <div className={`d-flex flex-wrap justify-end ${styles.bottom}`}>
-                        {tags.map(tag=>
-                            <Chip color="primary"  variant="outlined" className="mr-5" key={tag}  label={tag}/>
+                        {tags.map((tag, iter)=>
+                            <Chip color="primary"  variant="outlined" className="mr-5 mt-10 mb-10" key={iter}  label={tag}/>
                         )}
                     </div>
                 </div>                         
@@ -66,13 +66,13 @@ export const QuizCard:React.FC<QuizCardProps> = ({size="md", src, name, tags, pl
                                 <Typography color="primary" className="text-center" variant="h5">
                                     {"Раунд " + (iter + 1) }
                                 </Typography>  
-                                <div className="d-flex pl-10 pr-10"> 
+                                <div className={`${styles.row} d-flex pl-10 pr-10 flex-wrap`}> 
                                     {item.map((val,themeCounter) => 
-                                        <div key={themeCounter}  className="d-flex">
+                                        <div key={themeCounter}  className="d-flex ">
                                             {(themeCounter > 0) && 
-                                                (<Divider className={styles.divider}  orientation="vertical" flexItem />)
+                                                (<Divider className={`${styles.divider} opacity-3`}  orientation="vertical" flexItem />)
                                             }
-                                            <Typography color="primary" className="mr-10 ml-10" variant="body1">
+                                            <Typography color="primary" className="mr-10 ml-10 " variant="body1">
                                                 {val}
                                             </Typography>
                                         </div>

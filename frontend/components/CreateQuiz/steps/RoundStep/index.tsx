@@ -6,6 +6,8 @@ import Image from 'next/image'
 import { ModalCreateQuestion } from "../../../modals/ModalCreateQuestion"
 import { Update } from '@material-ui/icons'
 import produce from 'immer'
+import QuestionRows from '../../../../src/store/QuestionRows'
+import { observer } from 'mobx-react-lite'
 
 const mockRows:QuizRowType[] = [
     {title:"title 1", row: [{price: 100}, {price: 200}, {price: 300}]},
@@ -15,13 +17,12 @@ const mockRows:QuizRowType[] = [
     {title:"title 5", row: [{price: 100}, {price: 200}, {price: 300}]}
 ]
 
+export const RoundStep = observer(() => {
+    // const [rows, setRows] = React.useState<QuizRowType[] >([])
+    const rows = QuestionRows.rows
 
-export const RoundStep = () => {
-    const [rows, setRows] = React.useState<QuizRowType[] >([])
     const [inputTheme, setInputTheme] = React.useState<String>("")
 
-    const [currentQuestion, setCurrentQuestion] = 
-        React.useState<QuizQuestionType>()
     const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false)
 
     const handleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,70 +31,68 @@ export const RoundStep = () => {
 
     const handleAddRow = ():void => {
         const theme = inputTheme
-        setRows(prev=> [...prev, {title: theme, row: [] }])
+        QuestionRows.addRow(theme)
         setInputTheme("")
     } 
 
-    const handleChangeRowTitle = (e:any, id:Number): void => {
-        setRows(prev =>
-            prev.map(( value, step) =>
-                 step === id ?  {...value,  title: e.target.value}  : value
-            )
-        )
-    }
+//     const handleChangeRowTitle = (e:any, id:Number): void => {
+//         setRows(prev =>
+//             prev.map(( value, step) =>
+//                  step === id ?  {...value,  title: e.target.value}  : value
+//             )
+//         )
+//     }
 
-    const handleRemoveRow = (id: Number):void => {
-        setRows(prev =>
-            prev.filter((value, step)=> 
-                step !== id
-        ))
-    }
+//     const handleRemoveRow = (id: Number):void => {
+//         setRows(prev =>
+//             prev.filter((value, step)=> 
+//                 step !== id
+//         ))
+//     }
 
-    const handleAddQuestion = (price:Number = 0, id: Number) => {
-        setRows(prev => 
-            prev.map((value, step)=>
-                step===id ? 
-                {
-                    ...value, 
-                    row: [...value.row, {price: price, text: "", answer: "", row: step}]
-                }
-                : value
-            )
-        )
-    }
+//     const handleAddQuestion = (price:Number = 0, id: Number) => {
+//         setRows(prev => 
+//             prev.map((value, step)=>
+//                 step===id ? 
+//                 {
+//                     ...value, 
+//                     row: [...value.row, {price: price, text: "", answer: "", row: step}]
+//                 }
+//                 : value
+//             )
+//         )
+//     }
 
-// removing question by link
-    const handleRemoveQuestion = (question: QuizQuestionType) => {
-        setRows(prev => 
-            prev.map((value, step)=>
-            step===question.row ? 
-            {
-                ...value, 
-                row: value.row.filter(q => q!==question)
-            }
-            : value
-        )
-        )
-    }
+// // removing question by link
+//     const handleRemoveQuestion = (question: QuizQuestionType) => {
+//         setRows(prev => 
+//             prev.map((value, step)=>
+//             step===question.row ? 
+//             {
+//                 ...value, 
+//                 row: value.row.filter(q => q!==question)
+//             }
+//             : value
+//         )
+//         )
+//     }
 
-    console.log(currentQuestion);
     
-    const handleChangePrice = (e:any, question: QuizQuestionType) => {
-  
-        setRows(prev => 
-            prev.map((value, step)=>
-            step===question.row ? 
-            {
-                ...value, 
-                row: value.row.map(q => q === question ? {...q, price: Number(e.target.value)} : q )
-            }
-            : value
-        ))
-    }
+//     const handleChangePrice = (e:any, question: QuizQuestionType) => {
+//         setRows(prev => 
+//             prev.map((value, step)=>
+//             step===question.row ? 
+//             {
+//                 ...value, 
+//                 row: value.row.map(q => q === question ? {...q, price: Number(e.target.value)} : q )
+//             }
+//             : value
+//         ))
+//     }
 
 
-    const handleClickQuestion = (q:QuizQuestionType) => {
-        setCurrentQuestion(q)
+    const handleClickQuestion =  (q:QuizQuestionType) => {
+        QuestionRows.setActiveQuestion(q)
         setModalIsOpen(true)
     }
 
@@ -101,13 +100,13 @@ export const RoundStep = () => {
 
     return (
         <div>
-            {currentQuestion && 
+            {QuestionRows.activeQuestion && 
             <ModalCreateQuestion 
                 isOpen={modalIsOpen}  
                 onClose={()=> setModalIsOpen(false)}
-                onDelete={() => handleRemoveQuestion(currentQuestion)}
-                question={currentQuestion}
-                onChangePrice={handleChangePrice}
+                onDelete={() => QuestionRows.deleteCurrentQuestion()}
+                question={QuestionRows.activeQuestion}
+                
             />}
            
             <div>
@@ -118,17 +117,17 @@ export const RoundStep = () => {
                                 <span> Тема {` ${rowId + 1}:`}</span>
                                 <TextField 
                                     value={row.title} 
-                                    onChange={(e) => handleChangeRowTitle(e, rowId)}
+                                    onChange={(e) => QuestionRows.changeRowTitle(rowId, e.target.value )}
                                     className="ml-20" 
                                 />
                                 <Tooltip title="Удалить тему и все созданные вопросы">
-                                    <IconButton onClick={() => handleRemoveRow(rowId)}  component="span">
+                                    <IconButton onClick={() => QuestionRows.deleteRow(rowId)}  component="span">
                                         <Image src="/static/remove.svg" width={24} height={24} alt="Remove"  />
                                     </IconButton>
                                 </Tooltip> 
                             </Typography>
                             <Typography variant="body1">
-                                {`Количество вопросов: ${row.row.length}`}
+                                {`Количество вопросов: ${row.questions.length}`}
                             </Typography>
                         </div>
                         <div className="ml-20">
@@ -136,7 +135,7 @@ export const RoundStep = () => {
                         <RoundTable  
                             onClickCell={handleClickQuestion}
                             isCreation
-                            onCreate={()=> handleAddQuestion(200, rowId)}
+                            onCreate={()=> QuestionRows.addQuestion(rowId, 300)}
                             data={[rows[rowId]]}
                         />
                         </div>
@@ -167,12 +166,12 @@ export const RoundStep = () => {
                     Предпросмотр Раунда
                 </Typography>
                 <RoundTable  
-                    data={rows}
+                    data={QuestionRows.rows}
                 />
             </div>
 
         </div>
     )
-}
+})
 
 

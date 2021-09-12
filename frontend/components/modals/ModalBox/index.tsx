@@ -1,5 +1,6 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
 import React from 'react'
+import styles from './ModalBox.module.scss'
 
 interface ModalCreateQuestionProps {
     isOpen: boolean
@@ -16,9 +17,10 @@ export const ModalBox:React.FC<ModalCreateQuestionProps> =
                 onClose={onClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
+                
             >
             <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-            <DialogContent>
+            <DialogContent className={styles.modal}>
                 {children}
             </DialogContent>
             </Dialog>

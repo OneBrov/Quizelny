@@ -2,6 +2,7 @@ import { Button, Typography } from '@material-ui/core'
 import clsx from 'clsx'
 import React from 'react'
 import { QuizQuestionType, QuizRowType } from '../../../types/QuizTypes'
+import { QuizTable } from '../QuizTable'
 import styles from './RoundTable.module.scss'
 
 
@@ -14,45 +15,45 @@ interface RoundTableParams {
 
 export const RoundTable:React.FC<RoundTableParams> = ({data, isCreation, onCreate, onClickCell}) => {
 
+    const QuestionIsComplete = (q: QuizQuestionType) => {
+        return q.answer&&q.price&&q.text ? true: false
+    }
+
+
     return (
-        <table className={styles.table}>
-            <thead>
-                <tr>
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((row, iter ) =>
-                    <tr key={iter}>
-                        {!isCreation &&
-                            <td className={styles.rowTitle}>
-                                <Typography display="block" variant="h6">
-                                    {row.title}
+
+        <QuizTable>
+            {data.map((row, iter ) =>
+                <tr key={iter}>
+                    {!isCreation &&
+                        <td className={styles.rowTitle}>
+                            <Typography display="block" variant="h6">
+                                {row.title}
+                            </Typography>
+                        </td>   
+                    }
+                    {row.questions.map((cell, iter) =>
+                        <td  key={iter} className={clsx(styles.cell, !QuestionIsComplete(cell)&&styles.notCompleted  )}>
+                            <Button onClick={()=> onClickCell(cell)} className="w100p h100p" >
+                                <Typography variant="h5">
+                                    {cell.price}
                                 </Typography>
-                            </td>   
-                        }
-                        
-                        {row.row.map((cell, iter) =>
-                            <td  key={iter} className={clsx(styles.cell,)}>
-                                <Button onClick={()=> onClickCell(cell)} className="w100p h100p" >
-                                    <Typography variant="h5">
-                                        {cell.price}
-                                    </Typography>
-                                </Button>
-                            </td>    
-                        )}
-                        {isCreation &&
-                            <td key={iter} className={styles.createButton} >
-                                <Button onClick={onCreate} className="w100p h100p" >
-                                    <Typography variant="h5">
-                                        Добавить вопрос
-                                    </Typography>
-                                </Button>
-                            </td>    
-                        }
-                        
-                    </tr>
-                )}
-            </tbody>
-        </table>
+                            </Button>
+                        </td>    
+                    )}
+                    {isCreation &&
+                        <td key={iter} className={styles.createButton} >
+                            <Button onClick={onCreate} className="w100p h100p" >
+                                <Typography variant="h5">
+                                    Добавить вопрос
+                                </Typography>
+                            </Button>
+                        </td>    
+                    }
+                    
+                </tr>
+            )}
+        </QuizTable>
+
     )
 }

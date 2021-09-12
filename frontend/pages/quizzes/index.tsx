@@ -40,6 +40,23 @@ export default function Quizzes() {
                         content={[["aboab", "babiba"],["habibaLorem"],["Ipsum", "doret", "Lorem"]]}
                     />
                 </Box>
+
+                <Divider />
+                <Box  display="flex" flexDirection="column"  >
+                    <QuizCard 
+                        name="No picture" 
+                        tags={["ilia", "abobnik","huibnik"]}
+                        content={[["ilia", "abobobobob"],["huihlallala"],["biba", "boba", "Lorem"]]}
+                    />
+                </Box>
+                <Divider />
+                <Box  display="flex" flexDirection="column"  >
+                    <QuizCard 
+                        name="No picture" 
+                        tags={["ilia", "abobnik","huibnik"]}
+                        content={[["ilia", "abobobobob"],["huihlallala"],["biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem","biba", "boba", "Lorem"]]}
+                    />
+                </Box>
             </Container>
         </MainLayout> 
 

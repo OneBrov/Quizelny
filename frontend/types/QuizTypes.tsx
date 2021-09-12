@@ -6,18 +6,27 @@ export interface QuizCoverType {
 }
 
 export interface QuizQuestionType {
+    row?: Number
+    column?: Number
     id? : String | Number
     price: Number
     text: String
     type?: "text" | "audio" | "picture"
     answer: String
     wrongAnswers?: String
+    src?: String
+    file?: File
 }
 
 export interface QuizRowType {
     title: String
-    row: QuizQuestionType[]
+    questions: QuizQuestionType[]
 }
 
+export interface QuizFinalQuestionType {
+    title: String
+    text: String
+    answer: String
+}
 
 export type QuizContentTypes = "audio" | "text" | "picture"

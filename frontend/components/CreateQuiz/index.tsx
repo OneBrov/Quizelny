@@ -1,5 +1,5 @@
 
-import { Divider, Step, StepButton, StepLabel, Stepper } from '@material-ui/core'
+import { Container, Divider, Step, StepButton, StepLabel, Stepper } from '@material-ui/core'
 import Image from 'next/image'
 import React from 'react'
 import { MainLayout } from '../MainLayout'
@@ -10,7 +10,7 @@ import { CoverStep } from './steps/CoverStep'
 import { FinalStep } from './steps/FinalStep'
 import { RoundStep } from './steps/RoundStep'
 
-const steps:stepsProps[] = [
+const steps = [
     {label: "Создание Обложки", type: "cover"},
     {label: "Раунд 1", type: "round"},
     {label: "Раунд 2", type: "round"},
@@ -37,7 +37,7 @@ export const CreateQuiz = () => {
     
 
     return (
-        <div>
+        <Container>
             <Stepper className={styles.stepper} nonLinear activeStep={step}>
                 {steps.map(({label}, index) => (
                 <Step className={styles.step} key={label}>
@@ -51,7 +51,7 @@ export const CreateQuiz = () => {
             <div className={`${styles.inputs} pr-50 pl-50 mt-20`}>
                 <StepComponent />
             </div>
-        </div>
+        </Container>
     )
 }
 

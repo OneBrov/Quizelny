@@ -6,11 +6,15 @@ interface MainButtonProps {
     width: string
     height: string
     fontSize: string
+    onClick: () => void
 }
 
-export const MainButton:React.FC<MainButtonProps> = ({children, background, width, height, fontSize=18 }) => {
+export const MainButton:React.FC<MainButtonProps> = ({
+    children, background, width, height, fontSize=18, onClick
+ }) => {
     return (
         <ButtonBase 
+            onClick={onClick}
             className={styles.button}
             focusRipple  
             style={{background: background, 
