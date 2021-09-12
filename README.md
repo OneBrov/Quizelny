@@ -1,4 +1,4 @@
 # Quizelny
-Next js + TypeScript frontend; Nesx JS backend 
+Next js + TypeScript frontend; Nest JS backend 
 
 
