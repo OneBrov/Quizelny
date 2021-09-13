@@ -54,7 +54,7 @@ export default function Room() {
                         </Typography>
                         <div className="d-flex ml-20 mt-10 mb-20 justify-center">
 
-                            {[...Array(userCount)].map((user, it) =>
+                            {[...Array(userCount)].map(( user, it) =>
                                 <UserCard key={it} className="mr-10" name="aboba"  />
                             )}
                             <Button 
