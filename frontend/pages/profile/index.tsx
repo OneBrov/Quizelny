@@ -1,7 +1,7 @@
 import { Box, Container, IconButton, Link, Typography } from '@material-ui/core'
 import Image from 'next/image'
 import React from 'react'
-import { MainLayout } from '../../components/MainLayout'
+import { MainLayout } from '../../components/layouts/MainLayout'
 import { PictureBox } from '../../components/PictureBox'
 import { TitleLine } from '../../components/TitleLine'
 import styles from './profile.module.scss'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainLayout } from '../components/MainLayout';
+import { MainLayout } from '../components/layouts/MainLayout';
 import { TitleLine } from '../components/TitleLine';
 import { MainButton } from '../components/Buttons/MainButton';
 import Image from 'next/image'
@@ -17,17 +17,15 @@ export default function Index() {
   return (
     <MainLayout>
 
+      <ModalQuickEnter 
+        isOpen={isQuickEnter}
+        onClose={()=> setIsQuickEnter(false)}
+      />
+
       <ModalRoomCreate 
         isOpen={isRoomCreation} 
         onClose={()=> setIsRoomCreation(false)} 
       />
-
-      <ModalQuickEnter 
-        isOpen={isQuickEnter}
-        onClose={()=> setIsQuickEnter(false)}
-      
-      />
-
 
       <TitleLine mainTitle="Меню сайта"/>
       <div className="d-flex flex align-center mb-50 justify-center">

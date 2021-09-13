@@ -50,12 +50,11 @@ export const RoomCard:React.FC<RoomCardProps> = ({
                                         <Image src="/static/unlocked.svg" width={24} height={24} alt="Locked" />
                                     </IconButton>
                                 </Tooltip> 
-
                         }
 
                     </div> 
                     <div className="mr-10">
-                        <Button href={roomId.toString()} variant="contained">
+                        <Button href={"/rooms/" + roomId.toString()} variant="contained">
                             Войти
                         </Button>
                     </div>

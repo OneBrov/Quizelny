@@ -5,34 +5,42 @@ import Home from '../../public/static/home.svg'
 import Person from '../../public/static/profile.svg'
 import VolumeUp from '../../public/static/sound.svg'
 import Settings from '../../public/static/settings.svg'
-import { Typography } from '@material-ui/core'
+import { Button, ButtonBase, Divider, Typography } from '@material-ui/core'
+import { Router, useRouter } from 'next/dist/client/router'
 
 
-const menu = [
-    {text:"Главная", icon: Home},
-    {text:"Профиль", icon: Person},
-    {text:"Громкость", icon: VolumeUp},
-    {text:"Настройки", icon: Settings},
-]
+
     
 
 
 export const LeftMenu: React.FC = () => {
+
+    const router = useRouter()
+
+    const menu = [
+        {text:"Главная", icon: Home, onClick: ()=>router.push("/") },
+        {text:"Профиль", icon: Person, onClick: ()=>router.push("/profile") },
+        {text:"Громкость", icon: VolumeUp},
+        {text:"Настройки", icon: Settings},
+    ]
+   
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
     return (
         <div onMouseOver={()=>setIsOpen(true)} onMouseLeave={()=>setIsOpen(false)}>
             <div className={`${styles.menu} ${isOpen ? styles.menuOpen : ''}`}>
                 {menu.map((item)=>
-                    <div key={item.text} className={`${styles.menuItem} d-flex align-center mb-10`}>
-                        <div className={styles.icon}>
-                            <Image 
-                                src={item.icon} width={50} 
-                                height={50} 
-                                alt={item.text}
-                            />
+                    <ButtonBase key={item.text} onClick={item.onClick ? item.onClick : () => console.log("On Click not found")}  >
+                        <div  className={`${styles.menuItem} d-flex align-center mb-10`}>
+                            <div className={styles.icon}>
+                                <Image 
+                                    src={item.icon} width={50} 
+                                    height={50} 
+                                    alt={item.text}
+                                />
+                            </div>
+                            <Typography variant="h6" >{item.text}</Typography>
                         </div>
-                        <Typography variant="h6" >{item.text}</Typography>
-                    </div>
+                    </ButtonBase >
                 )}
             </div>
         </div>

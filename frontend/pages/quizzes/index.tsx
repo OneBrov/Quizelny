@@ -2,7 +2,7 @@ import { Box, Container, Divider } from '@material-ui/core'
 import React from 'react'
 import { SearchButton } from '../../components/Buttons/SearchButton'
 import { QuizCard } from '../../components/cards/QuizCard'
-import { MainLayout } from '../../components/MainLayout'
+import { MainLayout } from '../../components/layouts/MainLayout'
 import { TitleLine } from '../../components/TitleLine'
 
 export default function Quizzes() {

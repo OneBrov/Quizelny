@@ -1,3 +1,4 @@
+import { Box } from '@material-ui/core'
 import React from 'react'
 import styles from './PictureBox.module.scss'
 
@@ -10,7 +11,7 @@ interface PictureBoxProps {
 
 export const PictureBox:React.FC<PictureBoxProps> = ({width="200px", height="200px", src}) => {
     return (
-        <div 
+        <Box 
         className={styles.box}
         style={{
             width: width, 
@@ -18,6 +19,6 @@ export const PictureBox:React.FC<PictureBoxProps> = ({width="200px", height="200
             background: "url(" + src + ")"
             }}
         >
-        </div>
+        </Box>
     )
 }

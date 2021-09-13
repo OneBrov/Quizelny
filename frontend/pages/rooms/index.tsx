@@ -1,7 +1,7 @@
 import { Container, Typography } from '@material-ui/core'
 import React from 'react'
 import { SearchButton } from '../../components/Buttons/SearchButton'
-import { MainLayout } from '../../components/MainLayout'
+import { MainLayout } from '../../components/layouts/MainLayout'
 import { TitleLine } from '../../components/TitleLine'
 import Image from 'next/image'
 import styles from "./rooms.module.scss"
@@ -20,14 +20,14 @@ export default function Rooms() {
             <Container className={styles.rooms}> 
                 <div className="d-flex flex-column">
                     <Typography variant="h5">
-                        Количество комнат: 4
+                        Количество комнат: 3
                     </Typography>
                     <RoomCard 
                         name="The First" 
                         quizName="Quiiizy" 
                         withPassword={false} 
                         userCount={10} 
-                        roomId="/" 
+                        roomId="1" 
                         status="Ожидание"
                     />
 
@@ -36,7 +36,7 @@ export default function Rooms() {
                         quizName="Quiiizy" 
                         withPassword={true} 
                         userCount={10} 
-                        roomId="/" 
+                        roomId="2" 
                         status="В игре"
                     />
 
@@ -45,7 +45,7 @@ export default function Rooms() {
                         quizName="Quiiizy" 
                         withPassword={true} 
                         userCount={10} 
-                        roomId="/" 
+                        roomId="3" 
                         status="В игре"
                     />
                 </div>

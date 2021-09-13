@@ -2,7 +2,7 @@
 import { Container, Divider, Step, StepButton, StepLabel, Stepper } from '@material-ui/core'
 import Image from 'next/image'
 import React from 'react'
-import { MainLayout } from '../MainLayout'
+import { MainLayout } from '../layouts/MainLayout'
 import { TitleLine } from '../TitleLine'
 
 import styles from './CreateQuiz.module.scss'

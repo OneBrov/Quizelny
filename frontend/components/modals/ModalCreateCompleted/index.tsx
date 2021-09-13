@@ -17,7 +17,6 @@ export const ModalCreateCompleted:React.FC<ModalCreateCompletedProps> = ({
             onClose={onClose} 
             title="Завершение создания викторины"
         >
-            
             <DialogContent className="mb-10">
                 <Typography variant="body1" align="center" >
                     Вы успешно создали викторину! Найти свою викторину вы можете у себя в профиле, либо с помощью кнопки снизу

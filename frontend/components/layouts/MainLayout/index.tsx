@@ -1,8 +1,8 @@
 import { Box, Container } from '@material-ui/core'
 import Head from 'next/head'
 import React from 'react'
-import { LeftMenu } from '../Menu'
-import { Navbar } from '../Navbar'
+import { LeftMenu } from '../../Menu'
+import { Navbar } from '../../Navbar'
 import styles from './MainLayout.module.scss'
 
 interface MainLayoutProps {

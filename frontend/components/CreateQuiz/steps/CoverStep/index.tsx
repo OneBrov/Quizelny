@@ -34,7 +34,7 @@ export const CoverStep = observer(() => {
                 <TextField 
                     value={tagsLine} 
                     onChange={handleTagsChange}
-                    className="mt-10 "
+                    className="mt-10 mb-10"
                     fullWidth
                     variant="filled"
                     label="Основные темы викторины"
