@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
+import { Dialog, DialogContent, DialogTitle } from '@material-ui/core'
 import React from 'react'
 import styles from './ModalBox.module.scss'
 

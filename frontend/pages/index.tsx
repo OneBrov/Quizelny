@@ -1,8 +1,6 @@
 import React from 'react';
 import { MainLayout } from '../components/layouts/MainLayout';
 import { TitleLine } from '../components/TitleLine';
-import { MainButton } from '../components/Buttons/MainButton';
-import Image from 'next/image'
 import { ButtonWithIcon } from '../components/Buttons/ButtonWithIcon';
 import { useRouter } from 'next/dist/client/router';
 import { ModalRoomCreate } from '../components/modals/ModalRoomCreate';

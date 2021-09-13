@@ -1,11 +1,9 @@
 import { Button, Divider, IconButton, TextField, Tooltip, Typography } from '@material-ui/core'
-import React, { HtmlHTMLAttributes } from 'react'
-import { QuizQuestionType, QuizRowType } from '../../../../types/QuizTypes'
+import React from 'react'
+import { QuizQuestionType } from '../../../../types/QuizTypes'
 import { RoundTable } from '../../../Tables/RoundTable'
 import Image from 'next/image'
 import { ModalCreateQuestion } from "../../../modals/ModalCreateQuestion"
-import { Update } from '@material-ui/icons'
-import produce from 'immer'
 import QuestionRows from '../../../../src/store/QuestionRows'
 import { observer } from 'mobx-react-lite'
 

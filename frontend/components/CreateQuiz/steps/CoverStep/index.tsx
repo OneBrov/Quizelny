@@ -1,17 +1,13 @@
-import { Box, Button, Divider, TextField, Typography } from '@material-ui/core'
+import {  Divider, TextField, Typography } from '@material-ui/core'
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import Cover from '../../../../src/store/Cover'
 import { FileButton } from '../../../Buttons/FileButton'
 import { QuizCard } from '../../../cards/QuizCard'
-import styles from './CoverStep.module.scss'
+
+
 export const CoverStep = observer(() => {
-
-    const [quizName, setQuizName] = React.useState<string>('')
     const [tagsLine, setTagsLine] = React.useState<string>('')
-    const [tags, setTags] = React.useState<string[]>([])
-
-
     const handleTagsChange = (e: any) => {
         const clearList = e.target.value.split(',').map((val: string) =>
             val.trim().toLowerCase()    
@@ -53,7 +49,7 @@ export const CoverStep = observer(() => {
                     Предпросмотр обложки
                 </Typography>
                 <div>
-                    <QuizCard name={Cover.data.title} tags={Cover.data.tags} src={Cover.data.picture} />
+                    <QuizCard content={[]} name={Cover.data.title} tags={Cover.data.tags} src={Cover.data.picture} />
                 </div>
             </div>
             

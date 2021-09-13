@@ -3,18 +3,17 @@ import React from 'react'
 import FinalQuestions from '../../../../src/store/FinalQuestions'
 import { QuizFinalQuestionType } from '../../../../types/QuizTypes'
 import { FinalTable } from '../../../Tables/FinalTable/indes'
-import { RoundTable } from '../../../Tables/RoundTable'
 import Image from "next/image"
 import { observer } from 'mobx-react-lite'
 import { ModalCreateFinalQuestion } from '../../../modals/ModalCreateFinalQuestion'
 import { ModalCreateCompleted } from '../../../modals/ModalCreateCompleted'
-const mockQuestions:QuizFinalQuestionType[] = [
-    {title: "one", text: "omega", answer: "pepega"},
-    {title: "two", text: "omega", answer: "pepega"},
-    {title: "three", text: "omega", answer: "pepega"},
-    {title: "four", text: "omega", answer: "pepega"},
+// const mockQuestions:QuizFinalQuestionType[] = [
+//     {title: "one", text: "omega", answer: "pepega"},
+//     {title: "two", text: "omega", answer: "pepega"},
+//     {title: "three", text: "omega", answer: "pepega"},
+//     {title: "four", text: "omega", answer: "pepega"},
 
-]
+// ]
 
 export const FinalStep = observer(() => {
     const [questionTitle, setQuestionTitle] = React.useState<String>("")

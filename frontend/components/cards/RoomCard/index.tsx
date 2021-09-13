@@ -1,7 +1,6 @@
 import { Button, IconButton, Tooltip, Typography } from '@material-ui/core'
 import React from 'react'
 import Image from 'next/image'
-
 import styles from './RoomCard.module.scss'
 
 

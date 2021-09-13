@@ -1,5 +1,4 @@
 import { Button, DialogActions, DialogContent, MenuItem, TextField } from '@material-ui/core'
-import { Palette, TextFields } from '@material-ui/icons'
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import QuestionRows from '../../../src/store/QuestionRows'

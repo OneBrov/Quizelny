@@ -1,10 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
-import { Divider, IconButton, InputAdornment, InputBase, InputLabel, OutlinedInput, Paper } from '@material-ui/core'
+import {  IconButton, InputBase, Paper } from '@material-ui/core'
 import styles from "./SearchButton.module.scss"
 
 export const SearchButton:React.FC = () => {
-    const [isOpen, setIsOpen] = React.useState<boolean>(false)
+    // const [isOpen, setIsOpen] = React.useState<boolean>(false)
+
+    
     return (
         <div className={`d-flex mr-20`}>
             <Paper component="form"  className={styles.search}>

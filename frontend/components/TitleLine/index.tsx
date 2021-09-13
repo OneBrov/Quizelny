@@ -1,6 +1,6 @@
 import { Box, Divider, Typography } from '@material-ui/core'
 import React from 'react'
-import styles from './TitleLine.module.scss' 
+// import styles from './TitleLine.module.scss' 
 
 interface TitleLineProps {
     mainTitle: string

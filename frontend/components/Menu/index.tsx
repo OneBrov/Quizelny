@@ -5,8 +5,8 @@ import Home from '../../public/static/home.svg'
 import Person from '../../public/static/profile.svg'
 import VolumeUp from '../../public/static/sound.svg'
 import Settings from '../../public/static/settings.svg'
-import { Button, ButtonBase, Divider, Typography } from '@material-ui/core'
-import { Router, useRouter } from 'next/dist/client/router'
+import {  ButtonBase, Typography } from '@material-ui/core'
+import {  useRouter } from 'next/dist/client/router'
 
 
 

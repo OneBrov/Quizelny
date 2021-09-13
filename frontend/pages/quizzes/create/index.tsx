@@ -1,4 +1,3 @@
-import { Typography } from '@material-ui/core'
 import React from 'react'
 import { CreateQuiz } from '../../../components/CreateQuiz'
 import { MainLayout } from '../../../components/layouts/MainLayout'

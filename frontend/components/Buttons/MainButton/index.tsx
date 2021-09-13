@@ -1,4 +1,4 @@
-import { Button, ButtonBase } from '@material-ui/core'
+import { ButtonBase } from '@material-ui/core'
 import React from 'react'
 import styles from './MainButton.module.scss'
 interface MainButtonProps {
