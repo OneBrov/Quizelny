@@ -5,7 +5,7 @@ import styles from './QuizCard.module.scss'
 
 interface QuizCardProps {
     size?: "sm" | "md" | "lg"
-    src: String
+    src?: String
     name: String
     tags: String[]
     playCount?: Number
