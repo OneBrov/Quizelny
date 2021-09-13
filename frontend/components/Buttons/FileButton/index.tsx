@@ -22,7 +22,7 @@ export const FileButton: React.FC<FileButtonProps> = ({
                         type="file"
                         accept={`${type}/*`}
                         hidden
-                        onChange={(e) => onChange(e)}
+                        onChange={(e) => onChange()}
                     />
                 </Button>
     )
