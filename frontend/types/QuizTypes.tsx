@@ -11,7 +11,7 @@ export interface QuizQuestionType {
     id? : String | Number
     price: Number
     text: String
-    type?: "text" | "audio" | "picture"
+    type?: "text" | "audio" | "image"
     answer: String
     wrongAnswers?: String
     src?: String
@@ -29,4 +29,4 @@ export interface QuizFinalQuestionType {
     answer: String
 }
 
-export type QuizContentTypes = "audio" | "text" | "picture"
+export type QuizContentTypes = "audio" | "text" | "image"

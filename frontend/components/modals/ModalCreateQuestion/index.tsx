@@ -10,7 +10,7 @@ import styles from './ModalCreateQuestion.module.scss'
 const PossibleQuestionTypes = [
     "audio",
     "text",
-    "picture"
+    "image"
 ]
 
 interface ModalCreateQuestionProps {
@@ -64,7 +64,7 @@ observer(
                         )} 
                     </TextField >
 
-                    {(question.type === "audio" || question.type === "picture") &&
+                    {(question.type === "audio" || question.type === "image") &&
                         <FileButton 
                             value={null} 
                             onChange={()=>console.log("Changed")}
