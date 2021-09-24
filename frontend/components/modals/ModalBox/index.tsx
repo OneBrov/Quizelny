@@ -4,7 +4,7 @@ import styles from './ModalBox.module.scss'
 
 interface ModalCreateQuestionProps {
     isOpen: boolean
-    onClose: ()=>void
+    onClose?: ()=>void
     title: String
 }
 

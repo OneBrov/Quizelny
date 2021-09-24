@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ObjectId } from 'mongoose';
+import { ParseObjectIdPipe } from 'src/parseObjectId.pipe';
 import { CreateRoundDto } from './dto/create-round.dto';
 import { RoundsService } from './rounds.service';
 
@@ -8,7 +9,7 @@ export class RoundsController {
   constructor(private roundsService: RoundsService) {}
 
   @Get(':id')
-  getOne(@Param() id: ObjectId) {
+  getOne(@Param('id', new ParseObjectIdPipe()) id: ObjectId) {
     return this.roundsService.getOne(id);
   }
 

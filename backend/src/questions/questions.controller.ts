@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ObjectId } from 'mongoose';
+import { ParseObjectIdPipe } from 'src/parseObjectId.pipe';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { QuestionsService } from './questions.service';
 
@@ -17,7 +18,7 @@ export class QuestionsController {
   constructor(private questionService: QuestionsService) {}
 
   @Get(':id')
-  getOne(@Param() id: ObjectId) {
+  getOne(@Param('id', new ParseObjectIdPipe()) id: ObjectId) {
     return this.questionService.getOne(id);
   }
 

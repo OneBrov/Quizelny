@@ -1,13 +1,36 @@
 import React from 'react';
 import Head from 'next/head';
-import { AppProps } from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'macro-css';
+
 import theme from '../src/theme';
-import '../styles/global.scss'
-export default function MyApp(props: AppProps) {
+import '../src/styles/global.scss'
+import User from '../src/store/User';
+import { AppProps } from 'next/dist/shared/lib/router/router';
+import { useRouter } from 'next/dist/client/router';
+import { observer } from 'mobx-react-lite';
+
+export default observer(function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
+  const router = useRouter()
+  React.useEffect(()=>{
+    async function checkAuth() {
+      try {
+        if(localStorage.getItem('token')){
+          await User.checkAuth()
+          if (!User.user.isActivated) {
+            router.replace('/auth')
+          }
+        } else {
+          router.replace('/auth')
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    checkAuth()
+  },[])
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -15,8 +38,11 @@ export default function MyApp(props: AppProps) {
     if (jssStyles) {
       jssStyles.parentElement!.removeChild(jssStyles);
     }
+
   }, []);
 
+  console.log(router.pathname );
+  
   return (
     <React.Fragment>
       <Head>
@@ -26,8 +52,10 @@ export default function MyApp(props: AppProps) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        { (User.user.isActivated || router.pathname === "/auth" ) &&
+          <Component {...pageProps} />
+        }
       </ThemeProvider>
     </React.Fragment>
   );
-}
+})

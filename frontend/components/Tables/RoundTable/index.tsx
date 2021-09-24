@@ -1,7 +1,7 @@
 import { Button, Typography } from '@material-ui/core'
 import clsx from 'clsx'
 import React from 'react'
-import { QuizQuestionType, QuizRowType } from '../../../types/QuizTypes'
+import { QuizQuestionType, QuizRowType } from '../../../src/types/QuizTypes'
 import { QuizTable } from '../QuizTable'
 import styles from './RoundTable.module.scss'
 

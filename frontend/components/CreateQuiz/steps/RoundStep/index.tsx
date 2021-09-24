@@ -1,6 +1,6 @@
 import { Button, Divider, IconButton, TextField, Tooltip, Typography } from '@material-ui/core'
 import React from 'react'
-import { QuizQuestionType } from '../../../../types/QuizTypes'
+import { QuizQuestionType } from '../../../../src/types/QuizTypes'
 import { RoundTable } from '../../../Tables/RoundTable'
 import Image from 'next/image'
 import { ModalCreateQuestion } from "../../../modals/ModalCreateQuestion"

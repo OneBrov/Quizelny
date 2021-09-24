@@ -23,8 +23,11 @@ export class Quizzes {
   @Prop()
   playCount: number;
 
-  @Prop({ type: { rounds: String, final: String } }) //id must be here
-  content: { rounds: string; final: string };
+  @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Rounds' })
+  rounds: mongoose.ObjectId[];
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Rounds' })
+  finalRound: mongoose.ObjectId;
 }
 
 export const QuizzesSchema = SchemaFactory.createForClass(Quizzes);

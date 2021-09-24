@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthGuard } from './auth.guard';
+import { AuthModule } from './auth/auth.module';
 import { FilesModule } from './files/files.module';
 import { QuestionsModule } from './questions/questions.module';
 
@@ -14,11 +17,15 @@ import { RoundsModule } from './rounds/rounds.module';
     FilesModule,
     QuestionsModule,
     RoundsModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://admin2:admin@cluster0.jbu5l.mongodb.net/quiz-app?retryWrites=true&w=majority',
-    ),
+    AuthModule,
+    MongooseModule.forRoot(process.env.MONGOOSE_LINK),
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}

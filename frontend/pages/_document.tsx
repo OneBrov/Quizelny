@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../src/theme';
 
+
 export default class MyDocument extends Document {
   render() {
     return (
@@ -58,8 +59,8 @@ MyDocument.getInitialProps = async (ctx) => {
       enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
 
+ 
   const initialProps = await Document.getInitialProps(ctx);
-
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.

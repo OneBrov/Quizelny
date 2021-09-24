@@ -5,13 +5,10 @@ import Home from '../../public/static/home.svg'
 import Person from '../../public/static/profile.svg'
 import VolumeUp from '../../public/static/sound.svg'
 import Settings from '../../public/static/settings.svg'
+import Logout from '../../public/static/logout.svg'
 import {  ButtonBase, Typography } from '@material-ui/core'
 import {  useRouter } from 'next/dist/client/router'
-
-
-
-    
-
+import User from '../../src/store/User'
 
 export const LeftMenu: React.FC = () => {
 
@@ -22,6 +19,7 @@ export const LeftMenu: React.FC = () => {
         {text:"Профиль", icon: Person, onClick: ()=>router.push("/profile") },
         {text:"Громкость", icon: VolumeUp},
         {text:"Настройки", icon: Settings},
+        {text:"Выйти", icon: Logout,onClick: ()=>{User.logout(); router.push('/auth')}},
     ]
    
     const [isOpen, setIsOpen] = React.useState<boolean>(false)

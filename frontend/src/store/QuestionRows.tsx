@@ -1,6 +1,6 @@
 import {makeAutoObservable} from 'mobx';
 import { enableStaticRendering } from 'mobx-react-lite';
-import { QuizContentTypes, QuizQuestionType, QuizRowType } from '../../types/QuizTypes';
+import { QuizContentTypes, QuizQuestionType, QuizRowType } from '../types/QuizTypes';
 
 enableStaticRendering(typeof window === 'undefined')
 

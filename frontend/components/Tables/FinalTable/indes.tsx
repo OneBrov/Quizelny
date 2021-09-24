@@ -1,6 +1,6 @@
 import { Button, Typography } from '@material-ui/core'
 import React from 'react'
-import { QuizFinalQuestionType } from '../../../types/QuizTypes'
+import { QuizFinalQuestionType } from '../../../src/types/QuizTypes'
 import { QuizTable } from '../QuizTable'
 import styles from './FinalTable.module.scss'
 

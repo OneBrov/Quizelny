@@ -14,5 +14,6 @@ import { Questions, QuestionsSchema } from './schema/questions.schema';
     ]),
     FilesModule,
   ],
+  exports: [QuestionsService],
 })
 export class QuestionsModule {}

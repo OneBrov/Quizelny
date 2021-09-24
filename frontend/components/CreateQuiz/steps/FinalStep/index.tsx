@@ -1,7 +1,7 @@
 import { Button, Divider, IconButton, TextField, Tooltip, Typography } from '@material-ui/core'
 import React from 'react'
 import FinalQuestions from '../../../../src/store/FinalQuestions'
-import { QuizFinalQuestionType } from '../../../../types/QuizTypes'
+import { QuizFinalQuestionType } from '../../../../src/types/QuizTypes'
 import { FinalTable } from '../../../Tables/FinalTable/indes'
 import Image from "next/image"
 import { observer } from 'mobx-react-lite'
@@ -119,7 +119,10 @@ export const FinalStep = observer(() => {
                     component="label"
                     color="secondary"
                 >
-                    Завершить создание викторины
+                    <Typography variant="body1" color="primary">
+                        Завершить создание викторины
+                    </Typography>
+                   
                 </Button>
 
             </div>

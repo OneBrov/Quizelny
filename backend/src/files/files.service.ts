@@ -21,7 +21,7 @@ export class FilesService {
     res.end(file.data);
   }
 
-  async deleteOne(id: ObjectId) {
+  async deleteOne(id: ObjectId | string) {
     const deleted = await this.filesModel.deleteOne({ _id: id });
     return deleted;
   }
@@ -32,7 +32,11 @@ export class FilesService {
       data: file.buffer,
       contentType: file.mimetype,
     });
+    return `${process.env.API_URL}/files/${fileInst._id}`;
+  }
 
-    return fileInst._id;
+  async getId(link: string) {
+    const fileId = link.split('/').reverse()[0];
+    return fileId;
   }
 }

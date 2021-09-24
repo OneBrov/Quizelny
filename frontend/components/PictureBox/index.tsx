@@ -16,7 +16,7 @@ export const PictureBox:React.FC<PictureBoxProps> = ({width="200px", height="200
         style={{
             width: width, 
             height:height, 
-            background: "url(" + src + ")"
+            backgroundImage: "url(" + src + ")"
             }}
         >
         </Box>

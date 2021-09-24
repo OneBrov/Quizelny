@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FilesModule } from 'src/files/files.module';
-import { FilesService } from 'src/files/files.service';
-import { Files, FilesSchema } from 'src/files/schema/files.schema';
+import { RoundsModule } from 'src/rounds/rounds.module';
 import { QuizzesController } from './quizzes.controller';
 import { QuizzesService } from './quizzes.service';
 import { Quizzes, QuizzesSchema } from './schema/quizzes.schema';
@@ -13,6 +12,7 @@ import { Quizzes, QuizzesSchema } from './schema/quizzes.schema';
   imports: [
     MongooseModule.forFeature([{ name: Quizzes.name, schema: QuizzesSchema }]),
     FilesModule,
+    RoundsModule,
   ],
 })
 export class QuizzesModule {}

@@ -2,7 +2,7 @@ import { Button, DialogActions, DialogContent, MenuItem, TextField } from '@mate
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import QuestionRows from '../../../src/store/QuestionRows'
-import { QuizContentTypes, QuizQuestionType } from '../../../types/QuizTypes'
+import { QuizContentTypes, QuizQuestionType } from '../../../src/types/QuizTypes'
 import { FileButton } from '../../Buttons/FileButton'
 import { ModalBox } from '../ModalBox'
 import styles from './ModalCreateQuestion.module.scss'

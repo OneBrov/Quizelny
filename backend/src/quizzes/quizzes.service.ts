@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 import { FilesService } from 'src/files/files.service';
+import { RoundsService } from 'src/rounds/rounds.service';
 
 import { CreateQuizDto } from './dto/create-quiz.dto';
 import { Quizzes, QuizzesDocument } from './schema/quizzes.schema';
@@ -11,6 +12,7 @@ export class QuizzesService {
   constructor(
     @InjectModel(Quizzes.name) private quizzesModel: Model<QuizzesDocument>,
     private readonly filesService: FilesService,
+    private readonly roundsService: RoundsService,
   ) {}
 
   async create(dto: CreateQuizDto, image?: Express.Multer.File) {
@@ -32,11 +34,16 @@ export class QuizzesService {
     return await this.quizzesModel.find();
   }
 
+  async getOne(id: ObjectId) {
+    return await this.quizzesModel.findById(id);
+  }
+
   async deleteOne(id: ObjectId) {
-    const quiz = await this.quizzesModel.findOne({ _id: id });
-    const deleted = await this.filesService.deleteOne(quiz.imageId);
-    console.log(deleted);
-    const deletedQuiz = quiz.deleteOne();
+    const quiz = await this.quizzesModel.findById(id);
+    // this.filesService.deleteOne(quiz.imageId);
+    // this.roundsService.deleteOne(quiz.finalRound);
+    // quiz.rounds.map((round) => this.roundsService.deleteOne(round));
+    const deletedQuiz = await quiz.deleteOne();
     return deletedQuiz;
   }
 

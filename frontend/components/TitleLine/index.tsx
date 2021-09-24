@@ -11,7 +11,7 @@ interface TitleLineProps {
 export const TitleLine:React.FC<TitleLineProps> = ({mainTitle="", secondaryTitle="", children=""}) => {
     return (
         <>
-        <Box  marginTop="10px" display="flex" justifyContent="space-between" alignItems="center" color="#fff">
+        <Box marginTop="10px" display="flex" justifyContent="space-between" alignItems="center" color="#fff">
             <Typography variant="h3" className="ml-40"> {mainTitle}</Typography>
             {!children ? 
                 <Typography variant="h3"> {secondaryTitle}</Typography>: 

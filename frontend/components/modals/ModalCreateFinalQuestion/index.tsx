@@ -2,7 +2,7 @@ import { Button, DialogActions, DialogContent, TextField } from '@material-ui/co
 import { observer } from 'mobx-react-lite';
 import React from 'react'
 import FinalQuestions from '../../../src/store/FinalQuestions';
-import { QuizFinalQuestionType } from '../../../types/QuizTypes';
+import { QuizFinalQuestionType } from '../../../src/types/QuizTypes';
 import { ModalBox } from '../ModalBox';
 
 

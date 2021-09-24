@@ -25,10 +25,10 @@ const theme = createTheme({
     type: "dark",
     
     primary: {
-      main: '#ffffff',
+      main: '#fffffe',
     },
     secondary: {
-      main: '#19857b',
+      main: '#ff8906',
     },
     success: {
       main: '#81c784',
