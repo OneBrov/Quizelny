@@ -1,23 +1,25 @@
-import { Button, Container, Grid, Tooltip, Typography } from '@material-ui/core'
+import { Button, Container, Grid, Paper, Tooltip, Typography } from '@material-ui/core'
 import React from 'react'
 import { BackgroundBlock } from '../../../components/BackgroundBlock'
 import { UserCard } from '../../../components/cards/UserCard'
+import { Chat } from '../../../components/Chat'
 import { MainLayout } from '../../../components/layouts/MainLayout'
-import { QuizWindow } from '../../../components/QuizWindow'
+import { RoomStore } from '../../../src/store/Room'
 
 export default function Room() {
     const [userCount, setUserCount] = React.useState<number>(3)
-
+    
     const handleAddUser = () => {
         setUserCount(userCount + 1)
-    }
-
+    }   
+    const roomStore = new RoomStore()
+    
     return (
         <MainLayout>
             <Container className="mt-20 h100p flex-auto" maxWidth={false} >
             <BackgroundBlock className="h100p d-flex flex-column">
                 <Grid container spacing={3} className="flex" >
-                    <Grid item xs={3} className="d-flex flex-column justify-between" >
+                    <Grid  item xs={3} xl={2} className="d-flex flex-column justify-between" >
                         <div className="p-20">
                             <Typography variant="h4" className="mb-10" >
                                 Ведущий:
@@ -40,10 +42,11 @@ export default function Room() {
                         </div>
                     </Grid>
                     <Grid item xs={9}>
-                        <div className="d-flex flex-column h100p">
-                            <div className="flex-auto p-10">
-                                <QuizWindow />
-                            </div>
+                        <div className="d-flex  h100p p-10">
+                             <Paper className="flex-auto p-10" elevation={3}  variant="outlined" >
+                                 mainContent
+                             </Paper>
+                             <Chat/>
                         </div>
                     </Grid>
                 </Grid>   
@@ -74,7 +77,6 @@ export default function Room() {
                 </div>
             </BackgroundBlock>
             </Container>    
-        
         </MainLayout>
     )
 }

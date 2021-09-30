@@ -2,7 +2,8 @@ export interface QuizCoverType {
     id?: String
     title: String
     tags: String[]
-    picture: String
+    image: String
+    imageFile?: File
 }
 
 export interface QuizQuestionType {
@@ -11,7 +12,7 @@ export interface QuizQuestionType {
     id? : String | Number
     price: Number
     text: String
-    type?: "text" | "audio" | "image"
+    type?: QuizContentTypes
     answer: String
     wrongAnswers?: String
     src?: String
@@ -23,10 +24,10 @@ export interface QuizRowType {
     questions: QuizQuestionType[]
 }
 
-export interface QuizFinalQuestionType {
-    title: String
-    text: String
-    answer: String
-}
+// export interface QuizFinalQuestionType {
+//     title: String
+//     text: String
+//     answer: String
+// }
 
 export type QuizContentTypes = "audio" | "text" | "image"

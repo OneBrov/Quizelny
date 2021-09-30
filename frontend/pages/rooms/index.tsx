@@ -17,7 +17,7 @@ export default function Rooms() {
                 <Image src="/static/sort.svg" width={40} height={40} alt=""/>
                 <Typography variant="h5" color="primary">Сортировать</Typography>
             </div>
-            <Container className={styles.rooms}> 
+            <Container maxWidth="md"  className={styles.rooms}> 
                 <div className="d-flex flex-column">
                     <Typography variant="h5">
                         Количество комнат: 3

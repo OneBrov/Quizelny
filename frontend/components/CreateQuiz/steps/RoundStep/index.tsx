@@ -110,7 +110,6 @@ export const RoundStep = observer(() => {
                     data={QuestionRows.rows}
                 />
             </div>
-
         </div>
     )
 })

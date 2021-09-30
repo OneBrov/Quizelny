@@ -13,10 +13,12 @@
     "mobx": "^6.3.3",
     "mobx-react-lite": "^3.2.1",
     "next": "^11.1.2",
+    "nextjs-progressbar": "0.0.11",
     "react": "latest",
     "react-dom": "latest",
     "sass": "^1.38.2",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "socket.io-client": "^4.2.0"
   },
   "scripts": {
     "dev": "next",

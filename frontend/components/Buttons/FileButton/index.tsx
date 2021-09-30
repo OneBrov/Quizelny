@@ -2,9 +2,9 @@ import { Button } from '@material-ui/core'
 import React from 'react'
 
 interface FileButtonProps {
-    value: any
+    value?: any
     type: "audio" | "image"
-    onChange: () => void
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const FileButton: React.FC<FileButtonProps> = ({
@@ -22,7 +22,7 @@ export const FileButton: React.FC<FileButtonProps> = ({
                         type="file"
                         accept={`${type}/*`}
                         hidden
-                        onChange={() => onChange()}
+                        onChange={(e) => onChange(e)}
                     />
                 </Button>
     )

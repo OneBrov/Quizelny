@@ -10,6 +10,7 @@ import User from '../src/store/User';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import { useRouter } from 'next/dist/client/router';
 import { observer } from 'mobx-react-lite';
+import { LoadingLayout } from '../components/layouts/LoadingLayout/indext';
 
 export default observer(function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -41,19 +42,18 @@ export default observer(function MyApp(props: AppProps) {
 
   }, []);
 
-  console.log(router.pathname );
-  
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>Загрузка...</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        { (User.user.isActivated || router.pathname === "/auth" ) &&
-          <Component {...pageProps} />
+        { (User.user.isActivated || router.pathname === "/auth" ) ?
+            <Component {...pageProps} /> :
+            <LoadingLayout />
         }
       </ThemeProvider>
     </React.Fragment>

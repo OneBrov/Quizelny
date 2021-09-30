@@ -8,6 +8,14 @@ import { QuizCard } from '../../../cards/QuizCard'
 
 export const CoverStep = observer(() => {
     const [tagsLine, setTagsLine] = React.useState<string>('')
+    const [image, setImage] = React.useState<File>()
+    
+    React.useEffect(() => {
+        if (image) {
+            Cover.changePictureFile(image)
+        }
+    }, [image])
+
     const handleTagsChange = (e: any) => {
         const clearList = e.target.value.split(',').map((val: string) =>
             val.trim().toLowerCase()    
@@ -37,8 +45,7 @@ export const CoverStep = observer(() => {
                 />
 
                 <FileButton 
-                    value={null} 
-                    onChange={()=>console.log("change")}
+                    onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setImage(e.target.files![0])}
                     type="image"    
                 />
                     
@@ -49,7 +56,7 @@ export const CoverStep = observer(() => {
                     Предпросмотр обложки
                 </Typography>
                 <div>
-                    <QuizCard content={[]} name={Cover.data.title} tags={Cover.data.tags} src={Cover.data.picture} />
+                    <QuizCard content={[]} name={Cover.data.title} tags={Cover.data.tags} src={Cover.data.image} />
                 </div>
             </div>
             

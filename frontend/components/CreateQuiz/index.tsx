@@ -11,7 +11,6 @@ import { RoundStep } from './steps/RoundStep'
 const steps = [
     {label: "Создание Обложки", type: "cover"},
     {label: "Раунд 1", type: "round"},
-    {label: "Раунд 2", type: "round"},
     {label: "Финал", type: "final"},
     
 ]

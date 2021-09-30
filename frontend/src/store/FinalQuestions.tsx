@@ -1,39 +1,41 @@
 import {makeAutoObservable} from 'mobx';
 import { enableStaticRendering } from 'mobx-react-lite';
-import {  QuizFinalQuestionType } from '../types/QuizTypes';
+import { QuizQuestionType, QuizRowType } from '../types/QuizTypes';
+
 
 enableStaticRendering(typeof window === 'undefined')
 
  class FinalQuestions {
-    questions:QuizFinalQuestionType[] = []
-    currentQuestion:QuizFinalQuestionType | null = {title: "" || "", text: "", answer: ""}
-
+    title: String = '' //Final round title
+    rows: QuizRowType[] = [] // for final round only 1 question per row
+    currentQuestion: QuizQuestionType = {} as QuizQuestionType
+    
     constructor() {
         makeAutoObservable(this, {}, {deep:true})
     }
 
-    setCurrentQuestion(q:QuizFinalQuestionType) {
+    setCurrentQuestion(q:QuizQuestionType) {
         this.currentQuestion = q
     }
 
     deleteCurrentQuestion() {
         if (this.currentQuestion) {
-            this.questions = this.questions.filter(q => q !== this.currentQuestion)
+            this.rows = this.rows.filter(({questions}) => questions[0] !== this.currentQuestion)
         }
     }
 
     addQuestion(title?: String) {
-        this.questions.push({title: title || "", text: "", answer: ""})
+        this.rows.push({title: title || "", questions: [{} as QuizQuestionType ] })
     }
 
     deleteQuestion(questionId: any) {
-        this.questions = this.questions.filter((q, i)=> 
+        this.rows = this.rows.filter(({questions}, i)=> 
             i !== questionId
         )
     }
 
     changeTitle(questionId: any, title: String) {
-        this.questions[questionId].title = title 
+        this.rows[questionId].title = title 
     }
 
 

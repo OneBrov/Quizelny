@@ -1,12 +1,15 @@
 import { Button, Divider, IconButton, TextField, Tooltip, Typography } from '@material-ui/core'
 import React from 'react'
 import FinalQuestions from '../../../../src/store/FinalQuestions'
-import { QuizFinalQuestionType } from '../../../../src/types/QuizTypes'
+import { QuizQuestionType, QuizRowType } from '../../../../src/types/QuizTypes'
 import { FinalTable } from '../../../Tables/FinalTable/indes'
 import Image from "next/image"
 import { observer } from 'mobx-react-lite'
 import { ModalCreateFinalQuestion } from '../../../modals/ModalCreateFinalQuestion'
 import { ModalCreateCompleted } from '../../../modals/ModalCreateCompleted'
+import CreateQuizService from '../../../../src/api/services/CreateQuizService'
+import Cover from '../../../../src/store/Cover'
+import QuestionRows from '../../../../src/store/QuestionRows'
 // const mockQuestions:QuizFinalQuestionType[] = [
 //     {title: "one", text: "omega", answer: "pepega"},
 //     {title: "two", text: "omega", answer: "pepega"},
@@ -26,13 +29,13 @@ export const FinalStep = observer(() => {
         setQuestionTitle("")
     } 
 
-    const handleClickQuestion =  (q:QuizFinalQuestionType) => {
+    const handleClickQuestion =  (q:QuizQuestionType) => {
         FinalQuestions.setCurrentQuestion(q)
         setModalIsOpen(true)
     }
 
-    const handleUploadQuiz = () => {
-        console.log("Uploaded :)");
+    const handleUploadQuiz = async () => {
+        const quizLink = await CreateQuizService.createQuiz(Cover.data, [QuestionRows.rows], FinalQuestions.rows)
         
     }
 
@@ -46,7 +49,7 @@ export const FinalStep = observer(() => {
                 onDelete={()=> FinalQuestions.deleteCurrentQuestion()}
             />}
             <div>
-                {FinalQuestions.questions.map((row, rowId)=>
+                {FinalQuestions.rows.map((row, rowId)=>
                     <div key={rowId} className="mt-20 mb-40">
                         <div className="d-flex justify-between">
                             <Typography variant="h6">
@@ -97,7 +100,7 @@ export const FinalStep = observer(() => {
                     Предпросмотр финального раунда
                 </Typography>
                 <FinalTable  
-                    data={FinalQuestions.questions}
+                    data={FinalQuestions.rows}
                     onClickQuestion={()=>console.log("Clicked!!!")}
                 />
             </div>

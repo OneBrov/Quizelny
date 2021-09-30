@@ -20,7 +20,7 @@ export const Navbar = () => {
                 )}
 
                 <Box right="20px" position="absolute">
-                    <span className={styles.brand}>Quizelny</span>
+                    <span className={styles.brand}>Quizzer</span>
                 </Box>
             </Box>
         

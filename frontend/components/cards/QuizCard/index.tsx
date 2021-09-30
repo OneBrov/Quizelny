@@ -2,6 +2,7 @@ import { Chip, Divider, IconButton, Paper, Tooltip, Typography } from '@material
 import React from 'react'
 import Image from 'next/image'
 import styles from './QuizCard.module.scss'
+import { QuizRowWithTitle } from '../../../src/types/responses/QuizResponse'
 
 interface QuizCardProps {
     size?: "sm" | "md" | "lg"
@@ -9,7 +10,7 @@ interface QuizCardProps {
     name: String
     tags: String[]
     playCount?: Number
-    content: String[][]
+    content: {title: string, rows: QuizRowWithTitle[]}[]
 }
 
 const sizes = {
@@ -19,9 +20,12 @@ const sizes = {
 }
 
 
+
+
 export const QuizCard:React.FC<QuizCardProps> = ({
     size="md", src="/static/noPicture.svg", name, tags, playCount=0, content=[]
 }) => {
+    console.log(content);
     return (
         <div className="d-flex  mt-10 mb-10">
             <Paper elevation={3} className={styles.card} style={{
@@ -60,20 +64,20 @@ export const QuizCard:React.FC<QuizCardProps> = ({
                     {name}
                 </Typography>
                 <div className="d-flex flex-column">
-                    {content.map((item, iter) => 
+                    {content.map(({title, rows}, iter) => 
                         <div key={iter} className="d-flex flex-column">
                             <div >
                                 <Typography color="primary" className="text-center" variant="h5">
-                                    {"Раунд " + (iter + 1) }
+                                    {title}
                                 </Typography>  
                                 <div className={`${styles.row} d-flex pl-10 pr-10 flex-wrap`}> 
-                                    {item.map((val,themeCounter) => 
+                                    {rows?.map((val,themeCounter) => 
                                         <div key={themeCounter}  className="d-flex ">
                                             {(themeCounter > 0) && 
                                                 (<Divider className={`${styles.divider} opacity-3`}  orientation="vertical" flexItem />)
                                             }
-                                            <Typography color="primary" className="mr-10 ml-10 " variant="body1">
-                                                {val}
+                                            <Typography  className="mr-10 ml-10 " variant="body1">
+                                                {val.title}
                                             </Typography>
                                         </div>
                                     )}

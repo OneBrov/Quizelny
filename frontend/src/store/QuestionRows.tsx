@@ -4,7 +4,7 @@ import { QuizContentTypes, QuizQuestionType, QuizRowType } from '../types/QuizTy
 
 enableStaticRendering(typeof window === 'undefined')
 
- class QuestionRows {
+  class QuestionRows {
     rows:QuizRowType[] = [  
         // {title:"title 1", questions: [{price: 111, row: 0}, {price: 200}, {price: 300}]},
         // {title:"title 2", questions: [{price: 20, row: 1}, {price: 200}, {price: 300}]},
@@ -12,6 +12,7 @@ enableStaticRendering(typeof window === 'undefined')
         // {title:"title 4", questions: [{price: 40, row: 3}, {price: 200}, {price: 300}]},
         // {title:"title 5", questions: [{price: 50, row: 4}, {price: 200}, {price: 300}]}
     ]
+    title: string = "roundName"
     currentQuestion:QuizQuestionType | null = {price: 0, text: "placeHolder", answer: "No"}
 
     constructor(lastRows?: QuizRowType[]) {
